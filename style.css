@@ -26,11 +26,18 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+}
+
 body {
     font-family: var(--font-sans);
     color: var(--text-dark);
     line-height: 1.6;
-    overflow-x: hidden;
     scroll-behavior: smooth;
 }
 
@@ -80,6 +87,10 @@ ul {
     padding: 20px 0;
     transition: var(--transition);
     background: transparent;
+    /* Fix for mobile menu visibility */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .navbar.scrolled {
@@ -687,6 +698,10 @@ ul {
 @media (max-width: 768px) {
     .nav-toggle {
         display: block;
+        z-index: 10001;
+        /* Ensure on top */
+        color: #ffffff;
+        /* Explicitly set white */
     }
 
     .nav-menu {
@@ -1873,7 +1888,7 @@ ul {
     /* Navigation */
     .nav-toggle {
         display: block;
-        z-index: 1001;
+        z-index: 10001;
     }
 
     .nav-menu {
