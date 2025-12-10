@@ -696,34 +696,83 @@ ul {
 }
 
 @media (max-width: 768px) {
-    .nav-toggle {
+
+    /* Mobile Menu Toggle - Using ID for specificity */
+    #nav-toggle {
         display: block;
-        z-index: 10001;
-        /* Ensure on top */
-        color: #ffffff;
-        /* Explicitly set white */
+        z-index: 10001 !important;
+        /* Always on top */
+        color: var(--text-light);
+        transition: color 0.3s ease;
     }
 
-    .nav-menu {
+    /* Change toggle color when menu is active */
+    #nav-toggle.active {
+        color: #0B132B !important;
+        /* Dark Blue */
+    }
+
+    /* Mobile Menu Texture & Position */
+    #nav-menu {
         position: fixed;
         top: 0;
         right: -100%;
         width: 70%;
         height: 100vh;
-        background: var(--primary-color);
+        background-color: #FEFCF8 !important;
+        /* Off-white Pearl */
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start !important;
+        /* Move content up */
+        padding: 120px 40px 40px 40px !important;
+        /* padding-top 120px to clear X button */
         transition: 0.4s ease;
-        padding: 50px;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        z-index: 10000 !important;
+        display: flex;
     }
 
-    .nav-menu.active {
-        right: 0;
+    #nav-menu.active {
+        right: 0 !important;
     }
 
-    .nav-item {
-        margin: 15px 0;
+    /* Target direct list items */
+    #nav-menu .nav-item {
+        margin: 10px 0 !important;
+        /* Balanced spacing */
+    }
+
+    /* Text Colors */
+    #nav-menu .nav-link {
+        color: #0B132B !important;
+        /* Dark Blue */
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+
+    #nav-menu .nav-link:hover {
+        color: #C5A059 !important;
+        /* Gold */
+    }
+
+    /* Mobile Search Bar Fixes */
+    #nav-menu .search-bar {
+        border-bottom: 1px solid rgba(11, 19, 43, 0.3) !important;
+        margin-bottom: 20px !important;
+        width: 100%;
+    }
+
+    #nav-menu .search-bar input {
+        color: #0B132B !important;
+        width: 100%;
+    }
+
+    #nav-menu .search-bar input::placeholder {
+        color: rgba(11, 19, 43, 0.6) !important;
+    }
+
+    #nav-menu .search-btn {
+        color: #0B132B !important;
     }
 
     .main-tagline {

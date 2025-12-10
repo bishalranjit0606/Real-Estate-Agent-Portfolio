@@ -38,6 +38,7 @@ if (searchBtn && searchInput) {
 // Mobile Menu Toggle
 navToggle.addEventListener('click', () => {
     navMenu.classList.toggle('active');
+    navToggle.classList.toggle('active'); // Add this line
     // Toggle hamburger icon to close
     const icon = navToggle.querySelector('i');
     if (navMenu.classList.contains('active')) {
@@ -53,6 +54,7 @@ navToggle.addEventListener('click', () => {
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
         navMenu.classList.remove('active');
+        navToggle.classList.remove('active'); // Add this line
         const icon = navToggle.querySelector('i');
         icon.classList.remove('fa-times');
         icon.classList.add('fa-bars');
