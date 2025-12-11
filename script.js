@@ -225,3 +225,80 @@ if (contactForm && formStatus) {
         });
     });
 }
+
+// SIP Calculator Functionality
+const calculateBtn = document.getElementById('calculate-sip');
+const resultsContainer = document.getElementById('calculator-results');
+
+if (calculateBtn && resultsContainer) {
+    calculateBtn.addEventListener('click', function () {
+        // Get input values
+        const monthlyInvestment = parseFloat(document.getElementById('monthly-investment').value);
+        const tenureYears = parseFloat(document.getElementById('investment-tenure').value);
+        const annualReturnRate = parseFloat(document.getElementById('return-rate').value);
+
+        // Validate inputs
+        if (!monthlyInvestment || !tenureYears || !annualReturnRate) {
+            alert('Please fill in all fields with valid numbers.');
+            return;
+        }
+
+        if (monthlyInvestment <= 0 || tenureYears <= 0 || annualReturnRate < 0) {
+            alert('Please enter positive values for all fields.');
+            return;
+        }
+
+        // Calculate SIP
+        const monthlyRate = annualReturnRate / 12 / 100; // Convert annual rate to monthly decimal
+        const totalMonths = tenureYears * 12;
+
+        // SIP Future Value Formula: FV = P × ((1 + r)^n - 1) / r × (1 + r)
+        let futureValue;
+        if (monthlyRate === 0) {
+            // If rate is 0, simple multiplication
+            futureValue = monthlyInvestment * totalMonths;
+        } else {
+            futureValue = monthlyInvestment * (((Math.pow(1 + monthlyRate, totalMonths) - 1) / monthlyRate) * (1 + monthlyRate));
+        }
+
+        const totalInvested = monthlyInvestment * totalMonths;
+        const estimatedReturns = futureValue - totalInvested;
+
+        // Format numbers with US Dollar currency style
+        const formatCurrency = (num) => {
+            return '$' + num.toLocaleString('en-US', {
+                maximumFractionDigits: 0,
+                minimumFractionDigits: 0
+            });
+        };
+
+        // Update result displays
+        document.getElementById('total-invested').textContent = formatCurrency(totalInvested);
+        document.getElementById('estimated-returns').textContent = formatCurrency(estimatedReturns);
+        document.getElementById('maturity-amount').textContent = formatCurrency(futureValue);
+
+        // Show results with animation
+        resultsContainer.style.display = 'grid';
+
+        // Trigger fade-in animation for result cards
+        setTimeout(() => {
+            const resultCards = resultsContainer.querySelectorAll('.result-card');
+            resultCards.forEach(card => {
+                card.classList.add('visible');
+            });
+        }, 100);
+
+        // Smooth scroll to results
+        resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    // Allow Enter key to trigger calculation
+    const calculatorInputs = document.querySelectorAll('.calculator-input-group input');
+    calculatorInputs.forEach(input => {
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                calculateBtn.click();
+            }
+        });
+    });
+}

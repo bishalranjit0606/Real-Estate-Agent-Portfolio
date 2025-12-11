@@ -34,6 +34,7 @@
                 <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="#about" class="nav-link">About Me</a></li>
                 <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="#sip-calculator" class="nav-link">SIP Calculator</a></li>
                 <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonials</a></li>
                 <li class="nav-item"><a href="#work-approach" class="nav-link">Work Approach</a></li>
                 <li class="nav-item"><a href="#blog" class="nav-link">Blog</a></li>
@@ -225,6 +226,75 @@
                         White-glove service for high-net-worth clients seeking discretion, exclusivity,
                         and unparalleled attention to detail.
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SIP Calculator Section -->
+    <section class="sip-calculator-section" id="sip-calculator">
+        <div class="container">
+            <div class="section-header center-text fade-on-scroll">
+                <h4 class="section-subtitle">Investment Planning</h4>
+                <h2 class="section-title">Calculate Your Future <span class="gold-text">Home Fund</span></h2>
+                <p class="section-description">Plan your systematic investments and visualize your savings potential for
+                    your dream property</p>
+            </div>
+
+            <div class="calculator-container fade-on-scroll">
+                <div class="calculator-inputs">
+                    <div class="calculator-input-group">
+                        <input type="number" id="monthly-investment" name="monthly-investment" required placeholder=" "
+                            min="0" step="100">
+                        <label for="monthly-investment">Monthly Investment Amount ($)</label>
+                        <i class="fas fa-dollar-sign input-icon"></i>
+                    </div>
+
+                    <div class="calculator-input-group">
+                        <input type="number" id="investment-tenure" name="investment-tenure" required placeholder=" "
+                            min="1" max="50" step="1">
+                        <label for="investment-tenure">Investment Tenure (Years)</label>
+                        <i class="fas fa-calendar-alt input-icon"></i>
+                    </div>
+
+                    <div class="calculator-input-group">
+                        <input type="number" id="return-rate" name="return-rate" required placeholder=" " min="0"
+                            max="30" step="0.1">
+                        <label for="return-rate">Expected Annual Return (%)</label>
+                        <i class="fas fa-chart-line input-icon"></i>
+                    </div>
+                </div>
+
+                <div class="calculator-button-wrapper">
+                    <button type="button" class="btn btn-primary calculate-btn" id="calculate-sip">
+                        <i class="fas fa-calculator"></i> Calculate Future Value
+                    </button>
+                </div>
+
+                <div class="calculator-results" id="calculator-results" style="display: none;">
+                    <div class="result-card fade-on-scroll">
+                        <div class="result-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <h4 class="result-label">Total Amount Invested</h4>
+                        <p class="result-value" id="total-invested">$0</p>
+                    </div>
+
+                    <div class="result-card fade-on-scroll" style="animation-delay: 0.1s;">
+                        <div class="result-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h4 class="result-label">Estimated Interest/Returns</h4>
+                        <p class="result-value" id="estimated-returns">$0</p>
+                    </div>
+
+                    <div class="result-card highlight fade-on-scroll" style="animation-delay: 0.2s;">
+                        <div class="result-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h4 class="result-label">Total Maturity Amount</h4>
+                        <p class="result-value" id="maturity-amount">$0</p>
+                    </div>
                 </div>
             </div>
         </div>
