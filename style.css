@@ -242,8 +242,8 @@ ul {
     display: none;
     flex-direction: column;
     justify-content: space-around;
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -267,7 +267,7 @@ ul {
 }
 
 .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
 }
 
 .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
@@ -276,7 +276,7 @@ ul {
 }
 
 .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 /* Search Bar */
@@ -2639,7 +2639,7 @@ ul {
 /* Laptop/Tablet Mode (max-width: 1200px) */
 @media (max-width: 1200px) {
 
-    /* Navigation - Premium Mobile Menu */
+    /* Show mobile menu toggle button */
     .mobile-menu-toggle {
         display: flex;
         z-index: 10001;
@@ -2650,48 +2650,23 @@ ul {
         display: none;
     }
 
-    /* Mobile Menu Overlay Backdrop */
-    .nav-menu::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(11, 19, 43, 0.7);
-        backdrop-filter: blur(8px);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: -1;
-    }
 
-    .nav-menu.active::before {
-        opacity: 1;
-        visibility: visible;
-    }
-
+    /* Simple mobile menu */
     .nav-menu {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 60%;
-        max-width: 280px;
+        width: 70%;
+        max-width: 300px;
         height: 100vh;
-        background: linear-gradient(135deg,
-                rgba(254, 252, 248, 0.98) 0%,
-                rgba(245, 245, 240, 0.98) 50%,
-                rgba(254, 252, 248, 0.98) 100%);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+        background: #FEFCF8;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+        transition: right 0.3s ease;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
         z-index: 10000;
-        padding: 80px 15px 40px;
-        border-left: 2px solid var(--accent-color);
+        padding: 70px 20px 40px;
         overflow-y: auto;
     }
 
@@ -2699,145 +2674,51 @@ ul {
         right: 0;
     }
 
+    /* Simple menu items */
     .nav-item {
-        margin: 2px 0;
+        margin: 3px 0;
         width: 100%;
         text-align: center;
-        opacity: 0;
-        transform: translateX(30px);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* Staggered animation for menu items */
-    .nav-menu.active .nav-item:nth-child(1) {
-        animation: slideInRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.1s forwards;
-    }
-
-    .nav-menu.active .nav-item:nth-child(2) {
-        animation: slideInRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
-    }
-
-    .nav-menu.active .nav-item:nth-child(3) {
-        animation: slideInRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
-    }
-
-    .nav-menu.active .nav-item:nth-child(4) {
-        animation: slideInRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
-    }
-
-    .nav-menu.active .nav-item:nth-child(5) {
-        animation: slideInRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
-    }
-
-    .nav-menu.active .nav-item:nth-child(6) {
-        animation: slideInRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
-    }
-
-    .nav-menu.active .nav-item:nth-child(7) {
-        animation: slideInRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.7s forwards;
-    }
-
-    @keyframes slideInRight {
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
     }
 
     .nav-link {
         display: block;
-        padding: 8px 15px;
-        font-size: 0.8rem;
+        padding: 10px 20px;
+        font-size: 0.85rem;
         color: var(--text-dark);
-        letter-spacing: 0.8px;
-        font-weight: 500;
-        position: relative;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        border-radius: 4px;
-        margin: 2px 0;
-    }
-
-    .nav-link::before {
-        content: '';
-        position: absolute;
-        bottom: 6px;
-        left: 20px;
-        width: 0;
-        height: 2px;
-        background: linear-gradient(90deg, var(--accent-bright), transparent);
-        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        letter-spacing: 1px;
+        font-weight: 400;
+        text-transform: uppercase;
+        transition: all 0.2s ease;
     }
 
     .nav-link:hover {
-        background: rgba(197, 160, 89, 0.15);
-        color: var(--accent-bright) !important;
-        transform: translateX(5px);
-        padding-left: 20px;
-    }
-
-    .nav-link:hover::before {
-        width: calc(100% - 48px);
+        color: var(--accent-color);
     }
 
     .nav-link.active {
-        background: rgba(197, 160, 89, 0.2);
-        color: var(--accent-bright) !important;
-        border-left: 3px solid var(--accent-bright);
+        color: var(--accent-color);
+        font-weight: 600;
     }
 
-    .nav-link.active::after {
-        display: none;
-    }
-
+    /* Contact button in mobile menu */
     .btn-contact {
-        margin: 20px auto 0;
-        width: 75%;
-        display: block;
+        margin-top: 20px;
+        width: 90%;
         text-align: center;
-        background: var(--accent-bright);
-        color: var(--primary-color) !important;
-        padding: 10px 20px;
-        border-radius: 4px;
-        font-weight: 700;
+        background: var(--accent-color);
+        color: white;
+        padding: 12px 24px;
+        border: 2px solid var(--accent-color);
         font-size: 0.8rem;
-        box-shadow: 0 6px 20px rgba(197, 160, 89, 0.4);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        font-weight: 600;
+        letter-spacing: 1px;
     }
 
     .btn-contact:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(197, 160, 89, 0.5);
-        background: #e0b864;
-    }
-
-    /* Search Bar in Mobile Menu */
-    .search-item {
-        width: 85%;
-        margin-bottom: 30px;
-        opacity: 0;
-        transform: translateX(30px);
-    }
-
-    .nav-menu.active .search-item {
-        animation: slideInRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.05s forwards;
-    }
-
-    .search-bar {
-        width: 100%;
-        border-bottom: 2px solid rgba(197, 160, 89, 0.5);
-        padding-bottom: 8px;
-    }
-
-    .search-bar input {
-        color: #ffffff !important;
-    }
-
-    .search-bar input::placeholder {
-        color: rgba(255, 255, 255, 0.7) !important;
-    }
-
-    .search-bar:focus-within {
-        border-bottom-color: var(--accent-bright);
+        background: #b08f4a;
+        border-color: #b08f4a;
+        color: white;
     }
 
     /* Body scroll lock when menu is open */
@@ -2848,7 +2729,6 @@ ul {
     /* Hero Section */
     .hero-container {
         flex-direction: column-reverse;
-        /* Text on top/bottom depending on preference, typically text first on mobile is better but design has image right. Let's stack image top or bottom? Usually image top is good visually, but hero text is important. Let's try column-reverse to put image bottom or column for image top. If flex-direction is row (default), column puts text top. */
         flex-direction: column;
         text-align: center;
         padding-top: 100px;
@@ -3001,6 +2881,13 @@ ul {
         flex-direction: column;
         gap: 30px;
     }
+
+    /* Disable sliding animation for About Me section in mobile */
+    .about-section .fade-on-scroll {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
 
     .about-section {
         padding: 40px 0;
