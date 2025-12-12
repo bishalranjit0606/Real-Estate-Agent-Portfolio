@@ -3319,47 +3319,99 @@ ul {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, var(--accent-bright) 0%, #DAA520 100%);
-    border: none;
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    border: 3px solid rgba(255, 255, 255, 0.9);
     border-radius: 50%;
-    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+    box-shadow:
+        0 8px 30px rgba(255, 215, 0, 0.6),
+        0 0 0 0 rgba(255, 215, 0, 0.7);
     cursor: pointer;
     z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: pulse-qr 2s ease-in-out infinite;
+    animation: float-bounce 3s ease-in-out infinite, pulse-ring 2s ease-out infinite;
 }
 
+
+
 .floating-qr-icon i {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: var(--primary-color);
     transition: transform 0.3s ease;
+    animation: icon-wiggle 3s ease-in-out infinite;
 }
 
 .floating-qr-icon:hover {
-    transform: scale(1.1) translateY(-3px);
-    box-shadow: 0 12px 35px rgba(255, 215, 0, 0.6);
+    transform: scale(1.15) translateY(-5px);
+    box-shadow:
+        0 15px 45px rgba(255, 215, 0, 0.8),
+        0 0 0 0 rgba(255, 215, 0, 0);
     animation: none;
 }
 
+
+
 .floating-qr-icon:hover i {
-    transform: rotate(5deg) scale(1.1);
+    transform: rotate(10deg) scale(1.15);
+    animation: none;
 }
 
 .floating-qr-icon:active {
-    transform: scale(0.95);
+    transform: scale(1.05);
 }
 
-@keyframes pulse-qr {
-    0%, 100% {
-        box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+/* Floating bounce animation */
+@keyframes float-bounce {
+
+    0%,
+    100% {
+        transform: translateY(0px);
     }
+
     50% {
-        box-shadow: 0 8px 35px rgba(255, 215, 0, 0.7);
+        transform: translateY(-12px);
+    }
+}
+
+/* Pulsing ring effect */
+@keyframes pulse-ring {
+    0% {
+        box-shadow:
+            0 8px 30px rgba(255, 215, 0, 0.6),
+            0 0 0 0 rgba(255, 215, 0, 0.7);
+    }
+
+    50% {
+        box-shadow:
+            0 8px 30px rgba(255, 215, 0, 0.6),
+            0 0 0 15px rgba(255, 215, 0, 0);
+    }
+
+    100% {
+        box-shadow:
+            0 8px 30px rgba(255, 215, 0, 0.6),
+            0 0 0 0 rgba(255, 215, 0, 0);
+    }
+}
+
+/* Icon wiggle animation */
+@keyframes icon-wiggle {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-5deg);
+    }
+
+    75% {
+        transform: rotate(5deg);
     }
 }
 
@@ -3413,6 +3465,7 @@ ul {
         transform: translateY(-50px) scale(0.9);
         opacity: 0;
     }
+
     to {
         transform: translateY(0) scale(1);
         opacity: 1;
@@ -3479,14 +3532,16 @@ ul {
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
     .floating-qr-icon {
-        width: 55px;
-        height: 55px;
+        width: 65px;
+        height: 65px;
         bottom: 20px;
         right: 20px;
     }
 
+
+
     .floating-qr-icon i {
-        font-size: 1.3rem;
+        font-size: 1.6rem;
     }
 
     .qr-modal-content {
@@ -3510,14 +3565,16 @@ ul {
 
 @media (max-width: 480px) {
     .floating-qr-icon {
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
         bottom: 15px;
         right: 15px;
     }
 
+
+
     .floating-qr-icon i {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
 
     .qr-modal-title {
