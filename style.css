@@ -3310,3 +3310,221 @@ ul {
         line-height: 1.5;
     }
 }
+
+/* ===================================
+   Floating QR Code Contact Icon
+   =================================== */
+
+.floating-qr-icon {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--accent-bright) 0%, #DAA520 100%);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+    cursor: pointer;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: pulse-qr 2s ease-in-out infinite;
+}
+
+.floating-qr-icon i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.floating-qr-icon:hover {
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255, 215, 0, 0.6);
+    animation: none;
+}
+
+.floating-qr-icon:hover i {
+    transform: rotate(5deg) scale(1.1);
+}
+
+.floating-qr-icon:active {
+    transform: scale(0.95);
+}
+
+@keyframes pulse-qr {
+    0%, 100% {
+        box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+    }
+    50% {
+        box-shadow: 0 8px 35px rgba(255, 215, 0, 0.7);
+    }
+}
+
+/* QR Code Modal */
+.qr-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.qr-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.qr-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(11, 19, 43, 0.85);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+}
+
+.qr-modal-content {
+    position: relative;
+    background: linear-gradient(135deg, #FEFCF8 0%, #F5F5F0 100%);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    z-index: 10001;
+    animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 3px solid var(--accent-color);
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px) scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.qr-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    height: 35px;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10002;
+}
+
+.qr-modal-close i {
+    color: var(--accent-bright);
+    font-size: 1.1rem;
+}
+
+.qr-modal-close:hover {
+    background: var(--accent-color);
+    transform: rotate(90deg) scale(1.1);
+}
+
+.qr-modal-close:hover i {
+    color: var(--primary-color);
+}
+
+.qr-modal-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.qr-code-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    border: 2px solid var(--accent-color);
+}
+
+.qr-code-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+    border-radius: 2px;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .floating-qr-icon {
+        width: 55px;
+        height: 55px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .floating-qr-icon i {
+        font-size: 1.3rem;
+    }
+
+    .qr-modal-content {
+        padding: 30px 20px;
+        max-width: 90%;
+    }
+
+    .qr-modal-title {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
+
+    .qr-code-container {
+        padding: 15px;
+    }
+
+    .qr-code-image {
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .floating-qr-icon {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .floating-qr-icon i {
+        font-size: 1.2rem;
+    }
+
+    .qr-modal-title {
+        font-size: 1.2rem;
+    }
+
+    .qr-code-image {
+        max-width: 200px;
+    }
+}

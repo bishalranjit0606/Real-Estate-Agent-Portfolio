@@ -302,3 +302,40 @@ if (calculateBtn && resultsContainer) {
         });
     });
 }
+
+// ===================================
+// QR Code Modal Functionality
+// ===================================
+
+const floatingQrIcon = document.getElementById('floating-qr-icon');
+const qrModal = document.getElementById('qr-modal');
+const qrModalClose = document.getElementById('qr-modal-close');
+const qrModalOverlay = qrModal?.querySelector('.qr-modal-overlay');
+
+if (floatingQrIcon && qrModal && qrModalClose && qrModalOverlay) {
+    // Open modal when clicking the floating icon
+    floatingQrIcon.addEventListener('click', () => {
+        qrModal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    });
+
+    // Close modal when clicking the close button
+    qrModalClose.addEventListener('click', () => {
+        qrModal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    });
+
+    // Close modal when clicking the overlay (outside the content)
+    qrModalOverlay.addEventListener('click', () => {
+        qrModal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    });
+
+    // Close modal when pressing ESC key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && qrModal.classList.contains('active')) {
+            qrModal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+    });
+}
